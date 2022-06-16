@@ -6,16 +6,17 @@ CREATE TABLE SpotifyClone.Subscriptions
 (
 plan_id INT PRIMARY KEY AUTO_INCREMENT,
 plan_name VARCHAR(50) NOT NULL,
-plan_price DECIMAL(4,2) NOT NULL
+plan_price DECIMAL(3,2) NOT NULL
 ) engine = InnoDB;
 
 INSERT INTO
   SpotifyClone.Subscriptions(plan_name, plan_price)
   VALUES
     ('gratuito', 0.00),
+    ('pessoal', 6.99),
     ('familiar', 7.99),
-    ('universitário', 5.99),
-    ('pessoal', 6.99);
+    ('universitário', 5.99);
+
 
 CREATE TABLE SpotifyClone.Users
 (
@@ -61,12 +62,12 @@ CREATE TABLE SpotifyClone.Albums
   album_id INT NOT NULL AUTO_INCREMENT,
   album_name VARCHAR(50) NOT NULL,
   artist_id INT NOT NULL,
-  released_year YEAR NOT NULL,
+  year_released YEAR NOT NULL,
   CONSTRAINT PRIMARY KEY (album_id),
   FOREIGN KEY (artist_id) REFERENCES SpotifyClone.Artists (artist_id)
 ) engine = InnoDB;
 
-INSERT INTO SpotifyClone.Albums (album_name, artist_id, released_year)
+INSERT INTO SpotifyClone.Albums (album_name, artist_id, year_released)
 VALUES
   ('Envious',1,1990),
   ('Exuberant',1,1993),
